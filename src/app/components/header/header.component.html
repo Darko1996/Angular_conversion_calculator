@@ -1,0 +1,26 @@
+<header>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <mat-icon>functions</mat-icon>
+      <span class="example-spacer"></span>
+      <button *ngIf="deviceXs" mat-icon-button (click)="toggleMenu()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div *ngIf="!deviceXs">
+        <a routerLink="/currency-converter" mat-button>Currency Converter</a>
+        <a routerLink="/unit-converter" mat-button>Unit Converter</a>
+      </div>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="mob-menu" *ngIf="openMenu">
+      <mat-list>
+        <mat-list-item>
+          <a routerLink="/currency-converter"><mat-icon>arrow_right</mat-icon> Currency Converter</a>
+        </mat-list-item>
+        <mat-list-item>
+          <a routerLink="/unit-converter"><mat-icon>arrow_right</mat-icon> Unit Converter</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>

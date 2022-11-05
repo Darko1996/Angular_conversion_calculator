@@ -10,6 +10,7 @@ import {MediaObserver} from "@angular/flex-layout";
 export class AppComponent implements OnInit {
   private mediaSubscription: Subscription;
   private activeMediaQuery = '';
+
   title = 'conversion-calculator';
   deviceXs: boolean;
 
@@ -19,15 +20,9 @@ export class AppComponent implements OnInit {
     this.mediaSubscription = this.mediaObserver
       .asObservable()
       .subscribe((change) => {
-        change.forEach((item) => {
-          this.activeMediaQuery = item
-            ? `'${item.mqAlias}' = (${item.mediaQuery})`
-            : '';
-          if (item.mqAlias === 'xs') {
-            this.deviceXs = true;
-          }
-          console.log('activeMediaQuery', this.activeMediaQuery);
-        });
+        this.deviceXs = change[0].mqAlias === 'xs';
+        this.activeMediaQuery = change[0].mqAlias ? `'${change[0].mqAlias}' = (${change[0].mediaQuery})` : '';
+        console.log('activeMediaQuery', this.activeMediaQuery);
       });
   }
 
