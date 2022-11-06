@@ -1,0 +1,19 @@
+.results {
+  height: 0;
+  opacity: 0;
+  transition: ease .3s;
+
+  h2 {
+    margin-bottom: 0;
+  }
+  p {
+    margin-top: 10px;
+    margin-bottom: 0;
+    opacity: .8;
+  }
+}
+
+.active {
+  height: 100px !important;
+  opacity: 1 !important;
+}

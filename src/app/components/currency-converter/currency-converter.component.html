@@ -1,1 +1,11 @@
-<app-shared-converter></app-shared-converter>
+<section [@slideIn] fxLayoutAlign="center center" fxFlexFill >
+  <div fxFlex="40">
+    <app-shared-converter [items]="currencies"
+                          [converterType]="'currency'"
+                          [amount]="1"
+                          [fromField]="'EUR'"
+                          [toField]="'GBP'"
+                          [convertedResults]="convertedResults">
+    </app-shared-converter>
+  </div>
+</section>
