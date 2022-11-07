@@ -15,6 +15,7 @@ export class SharedConverterComponent implements OnInit {
   @Input() amount?: number;
   @Input() fromField?: string;
   @Input() toField?: string;
+  @Input() name: string;
 
   form: FormGroup;
 

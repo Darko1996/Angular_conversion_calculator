@@ -9,13 +9,12 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {FormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
-import { AddUnitComponent } from './components/add-unit/add-unit.component';
 import {MatCardModule} from "@angular/material/card";
 
 const routes: Routes = [{ path: '', component: UnitConverterComponent }];
 
 @NgModule({
-  declarations: [UnitConverterComponent, AddUnitComponent],
+  declarations: [UnitConverterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

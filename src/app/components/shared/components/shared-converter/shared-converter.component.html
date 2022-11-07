@@ -1,13 +1,17 @@
-<section fxLayoutAlign="center center" fxFlexFill>
-  <mat-card fxFlex="100">
-    <form fxLayout="column" (ngSubmit)="submitForm()" [formGroup]="form">
-      <!-- First row -->
-      <div fxLayoutAlign="space-between center">
-        <mat-form-field fxFlex="55">
+<section>
+  <mat-card>
+    <div class="title">
+      <h1>{{name}}</h1>
+      <mat-divider></mat-divider>
+    </div>
+
+    <form (ngSubmit)="submitForm()" [formGroup]="form">
+      <div fxLayoutAlign="space-between center" fxLayout.xs="column">
+        <mat-form-field fxFlex="55" fxFlex.xs="100">
           <input matInput placeholder="Amount" formControlName="amount">
         </mat-form-field>
 
-        <mat-form-field fxFlex="17">
+        <mat-form-field fxFlex="17" fxFlex.xs="100">
           <mat-label>From</mat-label>
           <mat-select formControlName="fromField">
             <mat-option *ngFor="let item of items" [value]="item">
@@ -16,11 +20,15 @@
           </mat-select>
         </mat-form-field>
 
-        <div fxLayoutAlign="center center" fxFlexFill fxFlex="5">
-          <button type="button" mat-icon-button color="primary" (click)="switchCurrencies()"><mat-icon>change_circle</mat-icon></button>
+        <div fxLayoutAlign="center center" fxFlexFill fxFlex="5" fxFlex.xs="100">
+          <button type="button" mat-icon-button
+                  color="{{converterType === 'currency' ? 'primary' : 'warn'}}"
+                  (click)="switchCurrencies()">
+            <mat-icon>change_circle</mat-icon>
+          </button>
         </div>
 
-        <mat-form-field fxFlex="17">
+        <mat-form-field fxFlex="17" fxFlex.xs="100">
           <mat-label>To</mat-label>
           <mat-select formControlName="toField">
             <mat-option *ngFor="let item of items" [value]="item">
@@ -31,7 +39,12 @@
       </div>
 
       <div fxLayoutAlign="center center">
-        <button type="submit" mat-flat-button color="accent" fxFlex="20"><mat-icon>published_with_changes</mat-icon> Convert</button>
+        <button type="submit" mat-flat-button
+                color="{{converterType === 'currency' ? 'primary' : 'warn'}}"
+                fxFlex="20" fxFlex.xs="100">
+          <mat-icon>published_with_changes</mat-icon>
+          Convert
+        </button>
       </div>
     </form>
 
@@ -39,6 +52,12 @@
       <div *ngIf="converterType === 'currency'">
         <h2>{{convertedResults?.base_amount | currency: convertedResults?.base}} = {{convertedResults?.converted_amount | currency: convertedResults?.target}}</h2>
         <p>{{1 | currency: convertedResults?.base}} = {{convertedResults?.exchange_rate | currency: convertedResults?.target}} </p>
+      </div>
+
+      <div *ngIf="converterType === 'unit'">
+        <h2>{{convertedResults?.base_amount + ' ' + convertedResults?.base}} =
+          {{convertedResults?.converted_amount + ' ' + convertedResults?.target}}
+        </h2>
       </div>
     </div>
   </mat-card>

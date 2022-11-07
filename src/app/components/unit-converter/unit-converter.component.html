@@ -1,22 +1,13 @@
 <section [@slideIn] fxLayoutAlign="center center" fxFlexFill>
-  <div fxFlex="40" >
-    <mat-tab-group>
-      <mat-tab label="Units Converter">
-        <div class="tab">
-          <app-shared-converter [items]="units"
-                                [converterType]="'unit'"
-                                [amount]="1"
-                                [fromField]="'m'"
-                                [toField]="'yd'"
-                                [convertedResults]="convertedResults">
-          </app-shared-converter>
-        </div>
-      </mat-tab>
-      <mat-tab label="Add Unit">
-        <div class="tab">
-          <app-add-unit></app-add-unit>
-        </div>
-      </mat-tab>
-    </mat-tab-group>
+  <div fxFlex="100" fxFlex.xs="100">
+    <app-shared-converter fxLayoutAlign="center center"
+                          [items]="units"
+                          [converterType]="'unit'"
+                          [amount]="1"
+                          [fromField]="'m'"
+                          [toField]="'yd'"
+                          [name]="'Unit Converter'"
+                          [convertedResults]="convertedResults">
+    </app-shared-converter>
   </div>
 </section>

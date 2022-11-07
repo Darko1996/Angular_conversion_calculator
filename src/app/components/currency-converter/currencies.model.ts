@@ -55,6 +55,12 @@ export class ConvertedCurrencies {
   target: string;
   base_amount: number;
   converted_amount: number;
-  exchange_rate: number;
-  last_updated: number;
+  exchange_rate?: number;
+  last_updated?: number;
+}
+
+export class HistoricalRates {
+  base: string;
+  date: string;
+  exchange_rates: ExchangeRates;
 }

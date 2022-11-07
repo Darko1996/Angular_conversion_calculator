@@ -1,0 +1,22 @@
+<section [@slideIn] fxLayoutAlign="center center" fxFlexFill>
+  <div fxFlex="40" fxFlex.xs="80">
+    <div class="title">
+      <h1>Add New Unit</h1>
+    </div>
+    <mat-card fxLayoutAlign="space-between center" fxLayout.xs="column">
+      <mat-form-field fxFlex="60" fxFlex.xs="100">
+        <mat-label>Choose Unit</mat-label>
+        <mat-select [(ngModel)]="unit">
+          <mat-option *ngFor="let unit of newUnits" [value]="unit">
+            {{unit}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div fxLayoutAlign="center center" fxFlex.xs="100">
+        <button type="button" mat-flat-button color="accent" [disabled]="!unit" (click)="addNewUnit()">Add Unit</button>
+      </div>
+    </mat-card>
+  </div>
+</section>
+
+

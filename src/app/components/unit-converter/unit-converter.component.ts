@@ -38,7 +38,7 @@ export class UnitConverterComponent implements OnInit {
   convertUnits(data: Convert): void {
     const fromUnit = data.fromField;
     const toUnit = data.toField;
-    let result;
+    let result = 0;
     let amount = data.amount;
 
     //Convert from Inches to other
@@ -55,7 +55,7 @@ export class UnitConverterComponent implements OnInit {
       result= amount / 39.370;
     }
     else if(fromUnit === "in" && toUnit ==="in"){
-      result = fromUnit;
+      result = amount;
     }
 
     //Convert from Meters to other
@@ -72,7 +72,7 @@ export class UnitConverterComponent implements OnInit {
       result= amount / 0.01;
     }
     else if(fromUnit === "m" && toUnit === "m"){
-      result = fromUnit;
+      result = amount;
     }
 
     //Convert from Yard to other
@@ -89,7 +89,7 @@ export class UnitConverterComponent implements OnInit {
       result= amount / 0.010936;
     }
     else if(fromUnit === "yd" && toUnit === "yd"){
-      result = fromUnit;
+      result = +fromUnit;
     }
 
     //Convert from CM to other
@@ -106,7 +106,7 @@ export class UnitConverterComponent implements OnInit {
       result= amount / 0.010936;
     }
     else if(fromUnit === "cm" && toUnit === "cm"){
-      result = fromUnit;
+      result = amount;
     }
 
     //Convert from KM to other
@@ -123,10 +123,17 @@ export class UnitConverterComponent implements OnInit {
       result= amount / 1093.6;
     }
     else if(fromUnit === "km" && toUnit === "km"){
-      result = fromUnit;
+      result = amount;
     }
 
-    console.log(`Output:`, result);
+    result.toFixed(5);
+
+    this.convertedResults = {
+      "base": data.fromField,
+      "target": data.toField,
+      "base_amount": data.amount,
+      "converted_amount": result,
+    };
   }
 
   localStorageListener(): void {
@@ -137,6 +144,5 @@ export class UnitConverterComponent implements OnInit {
       this.units = storedUnits;
       this.changeDetectorRef.detectChanges();
     }
-
   }
 }
